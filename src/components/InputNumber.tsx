@@ -10,6 +10,7 @@ export const InputNumber = () => {
   const [log, setLog] = useState<string[]>([]);
   const [trial, setTrial] = useState<number>(0);
   const [numberAnswer, setNumberAnswer] = useState<string[] | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const firstDigitRef = useRef<HTMLInputElement>(null);
   const secondDigitRef = useRef<HTMLInputElement>(null);
@@ -26,6 +27,15 @@ export const InputNumber = () => {
     }
     return numberDigits;
   };
+
+  const rules = [
+    "Click Start New Game to generate a secret 3-digit number.",
+    "Enter one digit in each box, then click Guess.",
+    "Right Numbers: Correct digits.",
+    "Right Places: Correct digits in the correct position.",
+    "Guess correctly to win",
+    "Use all 7 tries, and the secret number is revealed.",
+  ];
 
   const checkNumber = (numberGuessed: string[], answer: string[]): GuessResult => {
     const result: GuessResult = {
@@ -171,14 +181,41 @@ export const InputNumber = () => {
         >
           Start New Game
         </button>
-        <div className="mt-4">
-          {log.map((entry, index) => (
-            <p key={index} className="text-sm">
-              {entry}
-            </p>
-          ))}
-        </div>
+        <button
+          onClick={() => setShowModal(true)}
+          className="px-4 py-2 w-[300px] bg-gray-500 text-white rounded hover:bg-gray-600 mb-4"
+        >
+          Info
+        </button>
       </div>
+      <div className="mt-4 border-2 w-[300px] h-[300px] border-gray-300 rounded-md">
+        {log.map((entry, index) => (
+          <p key={index} className="text-sm text-center p-2">
+            {entry}
+          </p>
+        ))}
+      </div>
+
+      {showModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg max-w-md w-full">
+            <ul className="list-disc pl-4 space-y-2">
+              <h3 className="text-center font-semibold text-2xl mb-5">Game Rules :</h3>
+              {rules.map((text, index) => (
+                <li key={index} className="text-gray-700">
+                  {text}
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => setShowModal(false)}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-full"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
