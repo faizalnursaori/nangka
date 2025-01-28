@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
 .input-number {
-  @apply w-14 h-14 rounded-md border-2 text-xl text-center
+  @apply w-24 h-24 rounded-md border-2 text-2xl text-center font-semibold border-gray-300
 }
