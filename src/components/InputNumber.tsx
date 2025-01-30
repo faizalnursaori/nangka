@@ -134,7 +134,25 @@ export const InputNumber = () => {
 
   return (
     <div>
-      <div>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-yellow-100 text-gray-800">
+        <header className="relative mb-4">
+          <h1 className="text-[5.5rem] font-bold text-yellow-600">Nangka</h1>
+          <div className="flex gap-1 items-center justify-center">
+            <button
+              onClick={handleStart}
+              className="w-[148px] bg-lime-600 text-white rounded-lg hover:bg-lime-700"
+            >
+              Start
+            </button>
+            <button
+              onClick={() => setShowModal(true)}
+              className="w-[148px] bg-stone-700 text-white rounded-lg hover:bg-stone-800"
+            >
+              Info
+            </button>
+          </div>
+        </header>
+
         <form onSubmit={handleGuess}>
           <div className="flex gap-1.5">
             <input
@@ -175,25 +193,13 @@ export const InputNumber = () => {
             Guess
           </button>
         </form>
-        <button
-          onClick={handleStart}
-          className="px-4 py-2 w-[300px] bg-blue-500 text-white rounded hover:bg-blue-600 hover:cursor-pointer"
-        >
-          Start New Game
-        </button>
-        <button
-          onClick={() => setShowModal(true)}
-          className="px-4 py-2 w-[300px] bg-gray-500 text-white rounded hover:bg-gray-600 mb-4"
-        >
-          Info
-        </button>
-      </div>
-      <div className="mt-4 border-2 w-[300px] h-[300px] border-gray-300 rounded-md">
-        {log.map((entry, index) => (
-          <p key={index} className="text-sm text-center p-2">
-            {entry}
-          </p>
-        ))}
+        <div className="mt-4 border-2 w-[300px] h-[300px] border-gray-300 rounded-md">
+          {log.map((entry, index) => (
+            <p key={index} className="text-sm text-center p-2">
+              {entry}
+            </p>
+          ))}
+        </div>
       </div>
 
       {showModal && (

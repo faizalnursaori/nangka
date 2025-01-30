@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+body {
+  font-family: 'Balsamiq Sans', sans-serif;
+}
+
 .input-number {
   @apply w-24 h-24 rounded-md border-2 text-2xl text-center font-semibold border-gray-300
 }
