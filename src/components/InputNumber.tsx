@@ -134,7 +134,7 @@ export const InputNumber = () => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-yellow-100 text-gray-800">
+      <div className="flex flex-col items-center justify-center min-h-screen text-gray-800">
         <header className="relative mb-4">
           <h1 className="text-[5.5rem] font-bold text-yellow-600">Nangka</h1>
           <div className="flex gap-1 items-center justify-center">
